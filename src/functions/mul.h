@@ -8,7 +8,6 @@ public:
   FunctionMultiply(int num_args);
   int get_arg_type(int index);
 protected:
-  bool validate(GPValue *args);
   GPValue evaluate(GPValue *args);
 };
 FunctionMultiply *gpf_mul;

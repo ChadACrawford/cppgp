@@ -9,14 +9,14 @@ public:
   bool validate(GPValue* args);
 
   // Getters
-  int get_num_args();
+  unsigned int get_num_args();
   int get_type();
   virtual int get_arg_type(int index);
 protected:
-  int validate_arg_type(int index);
-  Function(int num_args, int type);
+  bool validate_arg_type(int index, GPValue* arg);
+  Function(unsigned int num_args, int type);
   virtual GPValue evaluate(GPValue* args);
-  const int num_args;
+  const unsigned int num_args;
   const int type;
 };
 

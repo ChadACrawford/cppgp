@@ -5,7 +5,7 @@
 
 class FunctionSubtract : public Function {
 public:
-  FunctionSubtract(int num_args);
+  FunctionSubtract();
 protected:
   bool validate(GPValue *args);
   GPValue evaluate(GPValue *args);

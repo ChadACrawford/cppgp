@@ -6,7 +6,7 @@
 
 class FunctionMod : public Function {
 public:
-  FunctionMod() : Function(2, GPTYPE_REAL);
+  FunctionMod();
   int get_arg_type(int index);
 protected:
   GPValue evaluate(GPValue* args);

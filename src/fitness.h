@@ -3,7 +3,7 @@
 
 class Fitness {
 public:
-  virtual void evaluate(Program p);
+  virtual double evaluate(Program* p);
 private:
 };
 

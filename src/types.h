@@ -8,7 +8,6 @@
 
 struct GPValue {
   int type;
-  bool is_ptr;
   int* value;
   GPValue(int type, int* value);
   ~GPValue();
