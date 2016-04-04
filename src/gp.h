@@ -1,15 +1,21 @@
 #ifndef GP_H
 #define GP_H
 
+#include "select.h"
+#include "cross.h"
+#include "mutate.h"
+
 class GP {
 public:
   GP();
+  void run();
   void generation();
-  void select();
-  void cross();
-  void mut();
+
+  Program* best_program();
 private:
-  int max_depth;
+  GPSelect* select;
+  GPCross* cross;
+  GPMutate* mutate;
 };
 
 #endif

@@ -11,10 +11,10 @@ public:
   ~Program();
   
   GPValue call(GPValue *params);
-  // GPValue call_adf(int *args);
+  // GPValue call_adf(int index, int *args);
 
   int get_num_params();
-  
+
   double* get_fitness();
   void set_fitness(double fit);
 
@@ -39,7 +39,7 @@ public:
 private:
   Program* p;
   GPValue* params;
-}
+};
 
 
 class ProgramNode {

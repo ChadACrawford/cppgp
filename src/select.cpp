@@ -10,7 +10,7 @@ double rand_double() {
 
 GPSelect::GPSelect(Fitness* f) : f(f) {}
 
-Program* GPSelect::select(Program* pool, int pool_size, int new_pool_size) {}
+Program** GPSelect::select(Program** pool, int pool_size, int new_pool_size) {}
 
 // GPSelectTournament
 
@@ -19,10 +19,10 @@ GPSelectTournement::GPSelectTournament(Fitness* f, double p) :
   p(p)
 {}
 
-Program* GPSelectTournament::select(Program* pool,
-                                    unsigned int pool_size,
-                                    unsigned int new_pool_size) {
-  Program* new_pool = new Program[new_pool_size];
+Program** GPSelectTournament::select(Program** pool,
+                                     unsigned int pool_size,
+                                     unsigned int new_pool_size) {
+  Program** new_pool = new Program*[new_pool_size];
   for(int i = 0; i < new_pool_size; i++) {
     int r1 = rand() % pool_size;
     int r2 = rand() % pool_size;

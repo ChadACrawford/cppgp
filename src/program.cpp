@@ -8,6 +8,13 @@ Program::Program(int num_params) :
   fitness_set = false;
 }
 
+Program::Program(int num_params, ProgramNode* root) :
+  num_params(num_params),
+  root(root)
+{
+  fitness_set = false;
+}
+
 Program::~Program() {
   delete[] root;
 }
@@ -15,6 +22,10 @@ Program::~Program() {
 GPValue Program::call(GPValue* params) {
   this.params = params;
   return root->call();
+}
+
+int Program::get_num_params() {
+  return num_params;
 }
 
 double* Program::get_fitness() {
@@ -27,10 +38,13 @@ double* Program::get_fitness() {
 }
 
 void Program::set_fitness(double fit) {
-  fitness = new double;
-  *fitness = fit;
-  
+  fitness = fit;
   fitness_set = true;
+}
+
+Program* Program::copy_shallow() {
+  Program* p = new Program(num_params);
+  return p;
 }
 
 Program* Program::copy() {

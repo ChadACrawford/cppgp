@@ -10,7 +10,7 @@ double rand_double() {
 
 GPCross::GPCross(Fitness* f) : f(f) {}
 
-Program* GPCross::cross(Program* pool int pool_size, int new_pool_size) {}
+Program** GPCross::cross(Program** pool int pool_size, int new_pool_size) {}
 
 //GPCrossTree
 
@@ -49,8 +49,8 @@ ProgramNode* get_random_subtree(ProgramNode* tree, int level, int type) {
   }
 }
 
-Program* GPCrossTree::cross(Program* pool, int pool_size, int new_pool_size) {
-  Program* new_pool = new Program[new_pool_size];
+Program** GPCrossTree::cross(Program** pool, int pool_size, int new_pool_size) {
+  Program** new_pool = new Program*[new_pool_size];
   for(int i = 0; i < new_pool_size; i += 2) {
     int r1 = rand() % pool_size, r2 = rand() % pool_size;
     if(rand_double() > cross_p) {

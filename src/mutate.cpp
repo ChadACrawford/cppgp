@@ -13,7 +13,7 @@ GPMutate::GPMutate(Fitness* f, FunctionList* functions) :
   functions(functions)
 {}
 
-Program* GPMutate::mutate(Program* pool, int pool_size, int new_pool_size) {}
+Program** GPMutate::mutate(Program** pool, int pool_size, int new_pool_size) {}
 
 // GPMutateReplace
 
@@ -35,8 +35,8 @@ ProgramNode* GPMutateReplace::mutate_tree(ProgramNode* tree, int max_depth) {
   }
 }
 
-Program* GPMutateReplace::mutate(Program* pool, int pool_size) {
-  Program* new_pool = new Program[pool_size];
+Program** GPMutateReplace::mutate(Program** pool, int pool_size) {
+  Program** new_pool = new Program[pool_size];
   for(int i = 0; i < pool_size; i++) {
     Program* new_program = pool[i]->copy_shallow();
     ProgramNode* new_root = mutate_tree(pool->get_root(), max_depth);
