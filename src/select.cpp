@@ -34,10 +34,10 @@ Program* GPSelectTournament::select(Program* pool,
       r2 = tmp;
     }
     if(rand_double() < p) {
-      new_pool[i] = pool[r1];
+      new_pool[i] = pool[r1]->copy();
     }
     else {
-      new_pool[i] = pool[r2];
+      new_pool[i] = pool[r2]->copy();
     }
   }
   return new_pool;

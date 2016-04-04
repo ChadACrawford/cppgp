@@ -32,3 +32,20 @@ int Function::get_type() {
 bool validate_arg_type(int index, GPValue* arg) {
   return get_arg_type( index ) == arg->type;
 }
+
+// FunctionList
+
+FunctionList::FunctionList() {
+  functions = new vector<Function>[50];
+  for(int i = 0; i < GP_NUM_TYPES; i++) {
+    functions[i] = new vector<Function>();
+  }
+}
+
+void FunctionList::add_function(Function f) {
+  functions[f->get_type()].push_back(f);
+}
+
+vector<Function>* FunctionList::get_functions(int type) {
+  return functions[type];
+}

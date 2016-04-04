@@ -33,6 +33,14 @@ void Program::set_fitness(double fit) {
   fitness_set = true;
 }
 
+Program* Program::copy() {
+  Program* p = new Program(num_params);
+  p->fitness = fitness;
+  p->fitness_set = fitness_set;
+  p->root = root->copy_deep();
+  return p;
+}
+
 // ProgramRun
 
 ProgramRun::ProgramRun(Program* p, GPValue* params) :
@@ -46,110 +54,49 @@ GPValue ProgramRun::get_param(int index) {
 
 // ProgramNode
 
-ProgramNode::ProgramNode(Program* p) : p(p) {}
+ProgramNode::ProgramNode(Function* f) :
+  f(f) {}
 
-int ProgramNode::type() {}
-int* ProgramNode::eval() {}
-unsigned int ProgramNode::get_num_children() {}
-ProgramNode* ProgramNode::get_children() {}
-
-ProgramNode* ProgramNode::copy() {}
-
-// ProgramINode
-
-ProgramINode::ProgramINode(Program* p, Function* f) :
-  ProgramNode(p),
-  f(f)
-{}
-
-ProgramINode::~ProgramINode() {
+ProgramNode::~ProgramNode() {
   delete[] children;
 }
 
-int ProgramINode::type() {
-  return f->get_type();
-}
-
-GPValue ProgramINode::eval() {
+int* ProgramNode::eval(ProgramRun* p) {
   GPValue* args = new GPValue[f->get_num_args()];
   for(int i = 0; i < f->get_num_args(); i++) {
     args[i] = f_args[i]->eval();
   }
-  GPValue r = f->call(args);
+  GPValue r = f->call(p, args);
   delete[] args;
   return r;
 }
 
-unsigned int ProgramINode::get_num_children() {
+int ProgramNode::get_type() {
+  return f->get_type();
+}
+unsigned int ProgramNode::get_num_children() {
   return f->get_num_args();
 }
-
-ProgramNode* ProgramINode::get_children() {
+ProgramNode* ProgramNode::get_children() {
   return children;
 }
-
-Function* ProgramINode::get_f() {
-  return f;
+int ProgramNode::get_child_type(int index) {
+  return f->get_arg_type(index);
 }
-
-ProgramNode* ProgramINode::get_arg(int index) {
-  return f_args[i];
+ProgramNode* ProgramNode::get_child(int index) {
+  return children[index];
 }
-
-void ProgramINode::set_child(int index, ProgramNode* child) {
-  children[i] = child;
+void ProgramNode::set_child(int index, ProgramNode* child) {
+  children[index] = child;
 }
-
-ProgramNode* ProgramINode::copy() {
+ProgramNode* ProgramNode::copy_shallow() {
   ProgramINode* pn = new ProgramINode(f);
+  return pn;  
+}
+ProgramNode* ProgramNode::copy_deep() 
+  ProgramINode* pn = copy_shallow();
   for(int i = 0; i < get_num_children(); i++) {
     pn->set_arg(i, children[i]->copy());
   }
   return pn;
-}
-
-// ProgramTNode
-
-ProgramTNode::ProgramTNode(Program* p, GPValue value) :
-  ProgramNode(p),
-  value(value)
-{}
-
-int ProgramTNode::type() {
-  return value.type;
-}
-
-GPValue ProgramTNode::eval() {
-  return value;
-}
-
-unsigned int ProgramTNode::get_num_children() {
-  return 0;
-}
-
-ProgramNode* ProgramTNode::get_children() {
-  return 0;
-}
-
-// ProgramPNode
-
-ProgramPNode::ProgramPNode(Program* p, int index) :
-  ProgramNode(p),
-  param_index(index)
-{}
-
-int ProgramPNode::type() {
-  return p->get_param(param_index)->type;
-}
-
-GPValue ProgramPNode::eval() {
-  return &(p->get_param(param_index));
-}
-
-unsigned int ProgramTNode::get_num_children() {
-  return 0;
-}
-
-ProgramNode* ProgramTNode::get_children() {
-  return 0;
 }
