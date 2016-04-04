@@ -8,7 +8,7 @@ public:
   FunctionAdd(int num_args);
   int get_arg_type(int index);
 protected:
-  GPValue evaluate(GPValue* args);
+  GPValue evaluate(ProgramRun* p, GPValue* args);
 };
 
 FunctionAdd* gpf_add;
