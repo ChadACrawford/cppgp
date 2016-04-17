@@ -68,6 +68,7 @@ int run_sample_regression(int argc, char* args[]) {
   FunctionList* functions = get_functions();
   int max_depth = 5;
   int num_params = 1;
+
   Regression* fitness = new Regression(1, 400);
   GPGenerateRandom* generate = new GPGenerateRandom(functions, num_params, max_depth);
   GPSelectTournament* select = new GPSelectTournament(fitness, 0.7);

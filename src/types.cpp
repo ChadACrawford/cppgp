@@ -23,7 +23,7 @@ GPValue* GPValue::copy() {
     clone = new GPVBool(((GPVBool*)this)->value);
     break;
   case GPTYPE_CATEGORY:
-    clone = new GPVCategory(((GPVCategory*)this)->value, ((GPVCategory*)this)->num_categories);
+    clone = new GPVCategory(((GPVCategory*)this)->value, ((GPVCategory*)this)->model);
     break;
   default:
     clone = 0;
@@ -51,8 +51,30 @@ GPVBool::GPVBool(bool value) :
   value(value)
 {}
 
-GPVCategory::GPVCategory(int value, int num_categories) :
+GPVCategoryModel::GPVCategoryModel(std::string name) :
+  name(name)
+{
+  classes = vector<string>();
+}
+
+int GPVCategoryModel::size() {
+  return classes.size();
+}
+
+std::string GPVCategoryModel::get_name() {\
+  return name;
+}
+
+std::string GPVCategoryModel::get_class_name(int value) {
+  return classes[value];
+}
+
+GPVCategory::GPVCategory(int value, GPVCategoryModel* model) :
   GPValue(GPTYPE_CATEGORY),
   value(value),
-  num_categories(num_categories)
+  model(model)
 {}
+
+std::string GPVCategory::class_name() {
+  return model->get_class_name(value);
+}

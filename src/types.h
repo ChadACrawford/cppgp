@@ -8,6 +8,9 @@
 #define GPTYPE_BOOL 3
 #define GPTYPE_CATEGORY 4
 
+#include <string>
+#include <vector>
+
 struct GPValue {
   int type;
   GPValue* copy();
@@ -35,10 +38,22 @@ struct GPVBool: public GPValue {
   GPVBool(bool value);
 };
 
+class GPVCategoryModel {
+public:
+  GPVCategoryModel(std::string name);
+  int size();
+  std::string get_name();
+  std::string get_class_name(int value);
+private:
+  std::string name;
+  std::vector<std::string> classes;
+};
+
 struct GPVCategory: public GPValue {
   int value;
-  int num_categories;
-  GPVCategory(int value, int num_categories);
+  GPVCategoryModel* model;
+  std::string class_name();
+  GPVCategory(int value, GPVCategoryModel* model);
 };
 
 

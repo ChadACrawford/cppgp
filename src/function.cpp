@@ -5,7 +5,9 @@ Function::Function(const char* name, unsigned int num_args, int type) :
   name(name),
   num_args(num_args),
   type(type)
-{}
+{
+  
+}
 
 GPValue* Function::call(ProgramRun* p, GPValue** args) {
   if(validate(args))

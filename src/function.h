@@ -49,5 +49,8 @@ private:
 #include "functions/mod.h"
 #include "functions/param.h"
 #include "functions/value.h"
+#include "functions/and.h"
+#include "functions/or.h"
+#include "functions/not.h"
 
 #endif

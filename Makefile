@@ -231,6 +231,33 @@ src/functions/add.cpp.s:
 	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/add.cpp.s
 .PHONY : src/functions/add.cpp.s
 
+src/functions/and.o: src/functions/and.cpp.o
+
+.PHONY : src/functions/and.o
+
+# target to build an object file
+src/functions/and.cpp.o:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/and.cpp.o
+.PHONY : src/functions/and.cpp.o
+
+src/functions/and.i: src/functions/and.cpp.i
+
+.PHONY : src/functions/and.i
+
+# target to preprocess a source file
+src/functions/and.cpp.i:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/and.cpp.i
+.PHONY : src/functions/and.cpp.i
+
+src/functions/and.s: src/functions/and.cpp.s
+
+.PHONY : src/functions/and.s
+
+# target to generate assembly for a file
+src/functions/and.cpp.s:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/and.cpp.s
+.PHONY : src/functions/and.cpp.s
+
 src/functions/div.o: src/functions/div.cpp.o
 
 .PHONY : src/functions/div.o
@@ -311,6 +338,60 @@ src/functions/mul.s: src/functions/mul.cpp.s
 src/functions/mul.cpp.s:
 	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/mul.cpp.s
 .PHONY : src/functions/mul.cpp.s
+
+src/functions/not.o: src/functions/not.cpp.o
+
+.PHONY : src/functions/not.o
+
+# target to build an object file
+src/functions/not.cpp.o:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/not.cpp.o
+.PHONY : src/functions/not.cpp.o
+
+src/functions/not.i: src/functions/not.cpp.i
+
+.PHONY : src/functions/not.i
+
+# target to preprocess a source file
+src/functions/not.cpp.i:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/not.cpp.i
+.PHONY : src/functions/not.cpp.i
+
+src/functions/not.s: src/functions/not.cpp.s
+
+.PHONY : src/functions/not.s
+
+# target to generate assembly for a file
+src/functions/not.cpp.s:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/not.cpp.s
+.PHONY : src/functions/not.cpp.s
+
+src/functions/or.o: src/functions/or.cpp.o
+
+.PHONY : src/functions/or.o
+
+# target to build an object file
+src/functions/or.cpp.o:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/or.cpp.o
+.PHONY : src/functions/or.cpp.o
+
+src/functions/or.i: src/functions/or.cpp.i
+
+.PHONY : src/functions/or.i
+
+# target to preprocess a source file
+src/functions/or.cpp.i:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/or.cpp.i
+.PHONY : src/functions/or.cpp.i
+
+src/functions/or.s: src/functions/or.cpp.s
+
+.PHONY : src/functions/or.s
+
+# target to generate assembly for a file
+src/functions/or.cpp.s:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/functions/or.cpp.s
+.PHONY : src/functions/or.cpp.s
 
 src/functions/param.o: src/functions/param.cpp.o
 
@@ -609,6 +690,33 @@ src/random.cpp.s:
 	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/random.cpp.s
 .PHONY : src/random.cpp.s
 
+src/sample/classification.o: src/sample/classification.cpp.o
+
+.PHONY : src/sample/classification.o
+
+# target to build an object file
+src/sample/classification.cpp.o:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/sample/classification.cpp.o
+.PHONY : src/sample/classification.cpp.o
+
+src/sample/classification.i: src/sample/classification.cpp.i
+
+.PHONY : src/sample/classification.i
+
+# target to preprocess a source file
+src/sample/classification.cpp.i:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/sample/classification.cpp.i
+.PHONY : src/sample/classification.cpp.i
+
+src/sample/classification.s: src/sample/classification.cpp.s
+
+.PHONY : src/sample/classification.s
+
+# target to generate assembly for a file
+src/sample/classification.cpp.s:
+	$(MAKE) -f CMakeFiles/GeneticProgram.dir/build.make CMakeFiles/GeneticProgram.dir/src/sample/classification.cpp.s
+.PHONY : src/sample/classification.cpp.s
+
 src/sample/regression.o: src/sample/regression.cpp.o
 
 .PHONY : src/sample/regression.o
@@ -711,6 +819,9 @@ help:
 	@echo "... src/functions/add.o"
 	@echo "... src/functions/add.i"
 	@echo "... src/functions/add.s"
+	@echo "... src/functions/and.o"
+	@echo "... src/functions/and.i"
+	@echo "... src/functions/and.s"
 	@echo "... src/functions/div.o"
 	@echo "... src/functions/div.i"
 	@echo "... src/functions/div.s"
@@ -720,6 +831,12 @@ help:
 	@echo "... src/functions/mul.o"
 	@echo "... src/functions/mul.i"
 	@echo "... src/functions/mul.s"
+	@echo "... src/functions/not.o"
+	@echo "... src/functions/not.i"
+	@echo "... src/functions/not.s"
+	@echo "... src/functions/or.o"
+	@echo "... src/functions/or.i"
+	@echo "... src/functions/or.s"
 	@echo "... src/functions/param.o"
 	@echo "... src/functions/param.i"
 	@echo "... src/functions/param.s"
@@ -753,6 +870,9 @@ help:
 	@echo "... src/random.o"
 	@echo "... src/random.i"
 	@echo "... src/random.s"
+	@echo "... src/sample/classification.o"
+	@echo "... src/sample/classification.i"
+	@echo "... src/sample/classification.s"
 	@echo "... src/sample/regression.o"
 	@echo "... src/sample/regression.i"
 	@echo "... src/sample/regression.s"

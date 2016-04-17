@@ -32,10 +32,14 @@ set(FN_CPP
   ${FN_SRC}/mod.cpp
   ${FN_SRC}/param.cpp
   ${FN_SRC}/value.cpp
+  ${FN_SRC}/and.cpp
+  ${FN_SRC}/or.cpp
+  ${FN_SRC}/not.cpp  
 )
 
 set(SM_CPP
   ${SM_SRC}/regression.cpp
+  ${SM_SRC}/classification.cpp
 )
 
 add_executable(GeneticProgram src/main.cpp ${GP_CPP} ${FN_CPP} ${SM_CPP})

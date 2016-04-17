@@ -24,7 +24,7 @@ void FunctionValue::print() {
     cout << "bool(" << ((GPVBool*)value)->value << ")";
     break;
   case GPTYPE_CATEGORY:
-    cout << "cat(" << ((GPVCategory*)value)->value << "/" << ((GPVCategory*)value)->num_categories << ")";
+    cout << "cat " << ((GPVCategory*)value)->model->get_name()  << "(" << ((GPVCategory*)value)->class_name() << "/" << ")";
   default:
     cout << "value(type=" << value->type << ")";
   }
