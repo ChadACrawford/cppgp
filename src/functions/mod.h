@@ -2,16 +2,17 @@
 #define FUNCTION_MOD_H
 
 #include "../types.h"
-#include "../functions.h"
+#include "../function.h"
 
 class FunctionMod : public Function {
 public:
   FunctionMod();
   int get_arg_type(int index);
+  void print();
 protected:
-  GPValue evaluate(GPValue* args);
+  GPValue* evaluate(ProgramRun* p, GPValue** args);
 };
 
-FunctionMod* gpf_mod;
+extern FunctionMod* gpf_mod;
 
 #endif

@@ -7,9 +7,10 @@ class FunctionMultiply : public Function {
 public:
   FunctionMultiply(int num_args);
   int get_arg_type(int index);
+  void print();
 protected:
-  GPValue evaluate(GPValue *args);
+  GPValue* evaluate(ProgramRun* p, GPValue** args);
 };
-FunctionMultiply *gpf_mul;
+extern FunctionMultiply *gpf_mul;
 
 #endif

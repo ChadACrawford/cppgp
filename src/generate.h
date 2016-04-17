@@ -11,18 +11,18 @@ class GPGenerate {
 public:
   GPGenerate(FunctionList* functions, int num_params);
 
-  virtual Program** generate(int pool_size, int type);
+  virtual Program** run(int pool_size, int type);
 protected:
   FunctionList* functions;
   int num_params;
 };
 
 
-class GPGenerateRandom {
+class GPGenerateRandom : public GPGenerate {
 public:
-  GPGenerate(FunctionList* functions, int num_params, int max_depth);
+  GPGenerateRandom(FunctionList* functions, int num_params, int max_depth);
 
-  Program** generate(int pool_size, int type);
+  Program** run(int pool_size, int type);
 private:
   int max_depth;
 };

@@ -6,10 +6,12 @@
 class FunctionSubtract : public Function {
 public:
   FunctionSubtract();
+  int get_arg_type(int index);
+  void print();
 protected:
-  bool validate(GPValue *args);
-  GPValue evaluate(GPValue *args);
+  GPValue* evaluate(ProgramRun* p, GPValue** args);
 };
-FunctionSubtract *gpf_sub;
+
+extern FunctionSubtract* gpf_sub;
 
 #endif

@@ -1,18 +1,20 @@
 #include "sub.h"
 
-gpf_sub = new FunctionSub();
+FunctionSubtract* gpf_sub = new FunctionSubtract();
 
-FunctionSub::FunctionSub() : Function(2, GPTYPE_REAL) {}
+FunctionSubtract::FunctionSubtract() : Function("sub", 2, GPTYPE_REAL) {}
 
-int FunctionSub::get_arg_type(int index) {
+int FunctionSubtract::get_arg_type(int index) {
   return GPTYPE_REAL;
 }
 
-GPValue FunctionSub::evaluate(GPValue* args) {
-  double *total = new double;
-  double arg1 = *((double*) args[0]->value);
-  double arg2 = *((double*) args[1]->value);
-  *total = arg1 - arg2;
-  return GPValue(GPTYPE_REAL, total);
+void FunctionSubtract::print() {
+  cout << "sub";
 }
 
+GPValue* FunctionSubtract::evaluate(ProgramRun* p, GPValue** args) {
+  double arg1 = ((GPVReal*)args[0])->value;
+  double arg2 = ((GPVReal*)args[1])->value;
+  double total = arg1 - arg2;
+  return new GPVReal(total);
+}

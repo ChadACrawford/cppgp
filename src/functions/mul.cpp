@@ -1,17 +1,20 @@
 #include "mul.h"
 
-gpf_mul = new FractionMul(2);
-FunctionMul::FunctionAdd(int num_args) : Function(num_args, GPTYPE_REAL) {}
+FunctionMultiply* gpf_mul = new FunctionMultiply(2);
+FunctionMultiply::FunctionMultiply(int num_args) : Function("mul", num_args, GPTYPE_REAL) {}
 
-int FunctionMul::get_arg_type(int index) {
+int FunctionMultiply::get_arg_type(int index) {
   return GPTYPE_REAL;
 }
 
-GPValue FunctionMul::evaluate(GPValue* args) {
-  double *total = new double;
-  *total = 1;
+void FunctionMultiply::print() {
+  cout << "mul";
+}
+
+GPValue* FunctionMultiply::evaluate(ProgramRun* p, GPValue** args) {
+  double total = 1;
   for(int i = 0; i < num_args; i++) {
-    *total *= *((double*)args[i]->value);
+    total *= ((GPVReal*)args[i])->value;
   }
-  return GPValue(GPTYPE_REAL, total);
+  return new GPVReal(total);
 }

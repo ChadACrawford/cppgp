@@ -1,17 +1,20 @@
 #include "add.h"
 
-gpf_add = new FractionAdd(2);
-FunctionAdd::FunctionAdd(int num_args) : Function(num_args, GPTYPE_REAL) {}
+FunctionAdd* gpf_add = new FunctionAdd(2);
+FunctionAdd::FunctionAdd(int num_args) : Function("add", num_args, GPTYPE_REAL) {}
 
 int FunctionAdd::get_arg_type(int index) {
   return GPTYPE_REAL;
 }
 
-GPValue FunctionAdd::evaluate(GPValue* args) {
-  double *total = new double;
-  *total = 0;
+void FunctionAdd::print() {
+  cout << "add";
+}
+
+GPValue* FunctionAdd::evaluate(ProgramRun* p, GPValue** args) {
+  double total = 0;
   for(int i = 0; i < num_args; i++) {
-    *total += *((double*)args[i]->value);
+    total += ((GPVReal*)args[i])->value;
   }
-  return GPValue(GPTYPE_REAL, total);
+  return new GPVReal(total);
 }

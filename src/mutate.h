@@ -1,24 +1,27 @@
 #ifndef MUTATE_H
 #define MUTATE_H
 
+#include "fitness.h"
+
 class GPMutate {
 public:
   GPMutate(Fitness* f, FunctionList* functions);
 
-  virtual Program** mutate(Program** pool, int pool_size, int new_pool_size);
-private:
+  virtual Program** run(Program** pool, int pool_size);
+protected:
   Fitness* f;
   FunctionList* functions;
 };
 
-class GPMutateReplace {
+class GPMutateReplace : public GPMutate {
 public:
-  GPMutateReplace(Fitness* f, FunctionList* functions, double p, int max_depth);
+  GPMutateReplace(Fitness* f, FunctionList* functions, int max_depth, double p);
 
-  Program** mutate(Program** pool, int pool_size, int new_pool_size);
+  Program** run(Program** pool, int pool_size);
 private:
   int max_depth;
-  ProgramNode* mutate_tree(ProgramNode* tree, double p, int level, int max_depth);
-}
+  double p;
+  ProgramNode* mutate_tree(ProgramNode* tree, int max_depth);
+};
 
 #endif

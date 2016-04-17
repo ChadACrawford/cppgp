@@ -6,12 +6,13 @@
 
 class FunctionDiv : public Function {
 public:
-  FunctionDiv() : Function(2, GPTYPE_REAL);
+  FunctionDiv();
   int get_arg_type(int index);
+  void print();
 protected:
-  GPValue evaluate(GPValue* args);
+  GPValue* evaluate(ProgramRun* p, GPValue** args);
 };
 
-FunctionDiv* gpf_div;
+extern FunctionDiv* gpf_div;
 
 #endif

@@ -1,18 +1,27 @@
 #include "mod.h"
 #include <math.h>
 
-gpf_mod = new FunctionMod();
+FunctionMod* gpf_mod = new FunctionMod();
 
-FunctionMod::FunctionMod() : Function(2, GPTYPE_REAL) {}
+FunctionMod::FunctionMod() : Function("mod", 2, GPTYPE_REAL) {}
 
 int FunctionMod::get_arg_type(int index) {
   return GPTYPE_REAL;
 }
 
-GPValue FunctionMod::evaluate(GPValue* args) {
-  double arg1 = *((double*)(args[0]->value));
-  double arg2 = *((double*)(args[1]->value));
-  double *r = new double;
-  *r = fmod(arg1, arg2);
-  return GPValue(GPTYPE_REAL, r);
+void FunctionMod::print() {
+  cout << "mod";
+}
+
+GPValue* FunctionMod::evaluate(ProgramRun* p, GPValue** args) {
+  double arg1 = ((GPVReal*)args[0])->value;
+  double arg2 = ((GPVReal*)args[1])->value;
+  double r;
+  if(arg2 != 0) {
+    r = fmod(arg1, arg2);
+  }
+  else {
+    r = 0;
+  }
+  return new GPVReal(r);
 }

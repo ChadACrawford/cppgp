@@ -7,10 +7,11 @@ class FunctionAdd: public Function {
 public:
   FunctionAdd(int num_args);
   int get_arg_type(int index);
+  void print();
 protected:
-  GPValue evaluate(GPValue* args);
+  GPValue* evaluate(ProgramRun* p, GPValue** args);
 };
 
-FunctionAdd* gpf_add;
+extern FunctionAdd* gpf_add;
 
 #endif
