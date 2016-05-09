@@ -45,9 +45,13 @@ ProgramNode* get_random_subtree(ProgramNode* tree, int level, int type) {
     }
     else {
       ProgramNode* subtree;
-      int r = rand() % tree->get_num_children();
-      subtree = get_random_subtree(tree->get_child(r), level-1, type);
-      return subtree;
+      int start = rand() % tree->get_num_children();
+      for(int i = 0; i < tree->get_num_children(); i++) {
+        int r = (start + i) % tree->get_num_children();
+        subtree = get_random_subtree(tree->get_child(r), level-1, type);
+        if(subtree) return subtree;
+      }
+      return 0;
     }
   }
 }
@@ -63,7 +67,9 @@ Program** GPCrossTree::run(Program** pool, int pool_size, int new_pool_size) {
     else {
       int level = rand() % max_depth;
       ProgramNode* subtree1 = get_random_subtree(pool[r1]->get_root(), level, -1);
-      ProgramNode* subtree2 = get_random_subtree(pool[r2]->get_root(), level, subtree1->get_type());
+      ProgramNode* subtree2;
+      if(subtree1)
+        subtree2 = get_random_subtree(pool[r2]->get_root(), level, subtree1->get_type());
       if(subtree2) {
         ProgramNode* tree1 = copy_subtree_into_tree(pool[r1]->get_root(), subtree1->get_id(), subtree2);
         ProgramNode* tree2 = copy_subtree_into_tree(pool[r2]->get_root(), subtree2->get_id(), subtree1);

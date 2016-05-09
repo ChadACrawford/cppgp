@@ -13,7 +13,7 @@ public:
   GPValue* call(ProgramRun* p, GPValue** args);
   bool validate(GPValue** args);
 
-  virtual void print();
+  void print();
   
   // Getters
   unsigned int get_num_args();
@@ -52,5 +52,7 @@ private:
 #include "functions/and.h"
 #include "functions/or.h"
 #include "functions/not.h"
+#include "functions/geq.h"
+#include "functions/ge.h"
 
 #endif

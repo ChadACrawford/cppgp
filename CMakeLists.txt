@@ -34,7 +34,10 @@ set(FN_CPP
   ${FN_SRC}/value.cpp
   ${FN_SRC}/and.cpp
   ${FN_SRC}/or.cpp
-  ${FN_SRC}/not.cpp  
+  ${FN_SRC}/not.cpp
+  ${FN_SRC}/if.cpp
+  ${FN_SRC}/geq.cpp
+  ${FN_SRC}/ge.cpp
 )
 
 set(SM_CPP

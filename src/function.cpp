@@ -24,7 +24,9 @@ bool Function::validate(GPValue** args) {
   return true;
 }
 
-void Function::print() {}
+void Function::print() {
+  cout << name;
+}
 
 unsigned int Function::get_num_args() {
   return num_args;
